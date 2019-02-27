@@ -13,15 +13,16 @@ def get_train_data():
 
 def get_test_data():
     data = pd.read_csv("data/test_final.csv")
-    print(data.head())
     mat = data.values
     X = mat[:, 1:]
     return X
 
 def write_predictions(soft_predictions, model_name):
     data = pd.read_csv("data/sample-submission.csv")
-    print(data)
-
+    submission = data.drop(columns=['Y'])
+    submission.insert(1, 'Y', soft_predictions)
+    submission.to_csv(path_or_buf="predictions/" + model_name + ".csv", index=False)
 
 #get_train_data()
 #get_test_data()
+#write_predictions([], "test")
