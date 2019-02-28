@@ -11,7 +11,7 @@ np.random.seed(42)
 
 X_train, y_train = get_train_data()
 X_test = get_test_data()
-depths = [2, 5, 8]
+depths = [6, 8, 10]
 n_estimators = [100, 300, 500]
 
 for depth in depths:
@@ -20,8 +20,8 @@ for depth in depths:
         print("Model depth " + str(depth) + ", " + str(n) + " estimators")
         grid_params = {
             'max_depth' : [depth],
-            'learning_rate' : [0.01, 0.1, 1],
-            'lambda' : [0.01, 0.1, 1],
+            'learning_rate' : [0.05, 0.1, 0.5],
+            'lambda' : [0.001, 0.01, 0.1],
             'n_jobs' : [7],
             'n_estimators' : [n],
             'eval_metric' : ['auc']
