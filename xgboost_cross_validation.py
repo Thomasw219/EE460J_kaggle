@@ -1,20 +1,38 @@
 #!/usr/bin/env python3
 
 import numpy as np
+import time
 from xgboost import XGBClassifier
-from sklearn.grid_search import GridSearchCV
+from sklearn.model_selection import GridSearchCV
+
+from extract_data import *
+
+np.random.seed(42)
 
 X_train, y_train = get_train_data()
-grid_params = {
-    'max_depth' : [2, 4, 6, 8, 10]
-    'learning_rate' : [0.01, 0.02, 0.05, 0.1, 0.2, 0.5]
-    'lambda' : [0.1, 0.5, 1, 5, 10]
-    'n_jobs' : [4]
-    'n_estimators' : [50, 100, 200, 300, 400, 500]
-    'eval_metric' : ['auc']
-}
+X_test = get_test_data()
+depths = [2, 5, 8]
+n_estimators = [100, 300, 500]
 
-model = XGBClassifier()
-xgb_grid = GridSearchCV(model, grid_params, cv=5, n_jobs=-1)
-xgb_grid.fit(X_train, y_train)
-print(xgb_grid.best_params_)
+for depth in depths:
+    for n in n_estimators:
+        start = time.time()
+        print("Model depth " + str(depth) + ", " + str(n) + " estimators")
+        grid_params = {
+            'max_depth' : [depth],
+            'learning_rate' : [0.01, 0.1, 1],
+            'lambda' : [0.01, 0.1, 1],
+            'n_jobs' : [7],
+            'n_estimators' : [n],
+            'eval_metric' : ['auc']
+        }
+        model = XGBClassifier()
+        xgb_grid = GridSearchCV(model, grid_params, cv=3, n_jobs=-1, scoring='roc_auc', return_train_score='warn')
+        xgb_grid.fit(X_train, np.ravel(y_train))
+        end = time.time()
+        print("Time elapsed: " + str(end - start))
+        print("Best score: " + str(xgb_grid.best_score_))
+        print(xgb_grid.best_params_)
+        print("\n\n\n")
+        y_test = xgb_grid.predict_proba(X_test)[:, 1:]
+        write_predictions(y_test, "xgb_classifier_" + str(depth) + "_" + str(n))
