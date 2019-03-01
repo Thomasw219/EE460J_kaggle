@@ -45,4 +45,75 @@ Best score: 0.8738771819758645
 
 
 
+Model depth 6, 100 estimators
+Time elapsed: 884.813493013382
+Best score: 0.8647699827369163
+{'learning_rate': 0.5, 'n_estimators': 100, 'eval_metric': 'auc', 'max_depth': 6, 'lambda': 0.001, 'n_jobs': 7}
+
+
+
+
+Model depth 6, 300 estimators
+Time elapsed: 2473.9174313545227
+Best score: 0.8689512574167703
+{'learning_rate': 0.1, 'n_estimators': 300, 'eval_metric': 'auc', 'max_depth': 6, 'lambda': 0.001, 'n_jobs': 7}
+
+
+
+
+Model depth 6, 500 estimators
+Time elapsed: 3825.874902009964
+Best score: 0.8728793265347129
+{'learning_rate': 0.1, 'n_estimators': 500, 'eval_metric': 'auc', 'max_depth': 6, 'lambda': 0.001, 'n_jobs': 7}
+
+
+
+
+Model depth 8, 100 estimators
+Time elapsed: 1291.0142233371735
+Best score: 0.858865065013347
+{'learning_rate': 0.5, 'n_estimators': 100, 'eval_metric': 'auc', 'max_depth': 8, 'lambda': 0.001, 'n_jobs': 7}
+
+
+
+
+Model depth 8, 300 estimators
+Time elapsed: 3167.2584409713745
+Best score: 0.8694151259056969
+{'learning_rate': 0.1, 'n_estimators': 300, 'eval_metric': 'auc', 'max_depth': 8, 'lambda': 0.001, 'n_jobs': 7}
+
+
+
+
+Model depth 8, 500 estimators
+Time elapsed: 4796.887587070465
+Best score: 0.8711301579100598
+{'learning_rate': 0.1, 'n_estimators': 500, 'eval_metric': 'auc', 'max_depth': 8, 'lambda': 0.001, 'n_jobs': 7}
+
+
+
+
+Model depth 10, 100 estimators
+Time elapsed: 1596.512193441391
+Best score: 0.8591578403513305
+{'learning_rate': 0.5, 'n_estimators': 100, 'eval_metric': 'auc', 'max_depth': 10, 'lambda': 0.001, 'n_jobs': 7}
+
+
+
+
+Model depth 10, 300 estimators
+Time elapsed: 3873.9947266578674
+Best score: 0.8665806587855154
+{'learning_rate': 0.1, 'n_estimators': 300, 'eval_metric': 'auc', 'max_depth': 10, 'lambda': 0.001, 'n_jobs': 7}
+
+
+
+
+Model depth 10, 500 estimators
+Time elapsed: 5960.674443721771
+Best score: 0.8666944475198155
+{'learning_rate': 0.1, 'n_estimators': 500, 'eval_metric': 'auc', 'max_depth': 10, 'lambda': 0.001, 'n_jobs': 7}
+
+
+
 
