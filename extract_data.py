@@ -3,6 +3,7 @@
 import os
 import numpy as np
 import pandas as pd
+from sklearn import preprocessing
 from joblib import dump
 
 def get_train_data():
@@ -26,6 +27,9 @@ def write_predictions(soft_predictions, model_name):
 
 def write_model(model, model_name):
     dump(model, "models/" + model_name + ".joblib")
+
+def scale(X):
+    return preprocessing.scale(X)
 
 #get_train_data()
 #get_test_data()

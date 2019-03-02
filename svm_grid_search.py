@@ -14,9 +14,9 @@ X_test = get_test_data()
 
 model = SVC()
 grid_params = {
-    'C' : [5, 10, 20],
+    'C' : [0.1, 1, 10],
     'probability' : [True],
-    'gamma' : ['scale', 'auto'],
+    'gamma' : [1.e-8, 1.e-6, 1.e-4, 1.e-2, 1.e0, 1.e2],
     'decision_function_shape' : ['ovo']
 }
 xgb_grid = GridSearchCV(model, grid_params, cv=3, n_jobs=-1, scoring='roc_auc', return_train_score='warn')
@@ -26,3 +26,4 @@ print(xgb_grid.best_params_)
 
 y_test = xgb_grid.predict_proba(X_test)[:, 1:]
 write_predictions(y_test, "svm_rbf_c" + str(xgb_grid.best_params_['C']))
+write_model(model, "svm_rbf_c" + str(xgb_grid.best_params_['C']))
