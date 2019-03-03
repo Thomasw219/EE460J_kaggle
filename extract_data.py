@@ -4,6 +4,7 @@ import os
 import numpy as np
 import pandas as pd
 from sklearn import preprocessing
+from sklearn.ensemble import IsolationForest
 from joblib import dump
 
 def get_train_data():
@@ -30,6 +31,18 @@ def write_model(model, model_name):
 
 def scale(X):
     return preprocessing.scale(X)
+
+def outlier_removal(X, y):
+    model = IsolationForest(behaviour='new', contamination='auto')
+    model.fit(X, y)
+    X_new = np.empty((0, X.shape[1]))
+    y_new = np.empty((0, ))
+    is_outlier = model.predict(X)
+    for i, x in enumerate(is_outlier):
+        if x == 1:
+            X_new = np.append(X_new, [X[i]], axis=0)
+            y_new = np.append(y_new, [y[i]], axis=0)
+    return X_new, y_new
 
 #get_train_data()
 #get_test_data()

@@ -22,4 +22,4 @@ print("Scores: " + str(results))
 model.fit(X_train, y_train)
 y_test_soft = model.predict_proba(X_test)[:, 1:]
 write_predictions(y_test_soft, "lda_cv")
-write_model(model, "lda_svm")
+write_model(model, "vanilla_lda")
