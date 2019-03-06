@@ -14,5 +14,5 @@ for i in range(X.shape[1]):
     plt.hist(x_i)
     plt.show()
     plt.figure("logf" + str(i + 1))
-    plt.hist(scale(np.log1p(np.log1p(np.sum([np.ones((len(x_i), 1)), x_i], axis=0)))))
+    plt.hist(scale(np.log1p(np.sum([np.ones((len(x_i), 1)), x_i], axis=0))))
     plt.show()
